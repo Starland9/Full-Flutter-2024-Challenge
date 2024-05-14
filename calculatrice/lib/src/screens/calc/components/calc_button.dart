@@ -39,7 +39,7 @@ class CalcButton extends StatelessWidget {
               : null,
           padding: EdgeInsets.zero,
           minimumSize: size ?? const Size(0, 0),
-          fixedSize: size ?? const Size(60, 60),
+          fixedSize: size ?? Size(60.h, 60.h),
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.circular(radius ?? 35),
           ),

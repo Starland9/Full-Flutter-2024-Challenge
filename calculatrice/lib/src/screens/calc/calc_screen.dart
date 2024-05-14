@@ -37,7 +37,6 @@ class _CalcScreenState extends State<CalcScreen> {
               child: Row(
                 children: [
                   _buildThemeSwither(isDark, context),
-                  _bigSpacer(),
                   const Spacer(),
                   Text(
                     "Landry Calc",
@@ -50,13 +49,17 @@ class _CalcScreenState extends State<CalcScreen> {
               ),
             ),
             _buildExps(theme),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Column(
-                children: [
-                  _buildRowScrollButtons(),
-                  _buildCalcButtons(),
-                ],
+            Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildRowScrollButtons(),
+                    _buildCalcButtons(),
+                  ],
+                ),
               ),
             )
           ],
@@ -72,13 +75,12 @@ class _CalcScreenState extends State<CalcScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 _currentExpression,
-                style: theme.textTheme.bodyLarge?.copyWith(
+                style: theme.textTheme.headlineSmall?.copyWith(
                   color: theme.colorScheme.onBackground.withOpacity(0.8),
                 ),
                 textAlign: TextAlign.end,
@@ -145,7 +147,6 @@ class _CalcScreenState extends State<CalcScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ...listFirstSigns.map(
               (e) => CalcButton(
@@ -162,6 +163,7 @@ class _CalcScreenState extends State<CalcScreen> {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
               flex: 3,
@@ -171,20 +173,21 @@ class _CalcScreenState extends State<CalcScreen> {
                   Wrap(
                     alignment: WrapAlignment.start,
                     runAlignment: WrapAlignment.start,
-                    spacing: 5.w,
+                    spacing: 0,
+                    runSpacing: 0,
                     children: [
                       ...listNums,
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       CalcButton(
                         text: "0",
-                        size: Size(139.w, 60),
+                        size: Size(137.h, 60.h),
                         onTap: _manageExps,
                       ),
-                      SizedBox(width: 5.w),
                       CalcButton(
                         text: ".",
                         onTap: _manageExps,
@@ -195,9 +198,9 @@ class _CalcScreenState extends State<CalcScreen> {
               ),
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CalcButton(
                     text: "-",
@@ -206,13 +209,13 @@ class _CalcScreenState extends State<CalcScreen> {
                   ),
                   CalcButton(
                     text: "+",
-                    size: const Size(60, 97.5),
+                    size: Size(60.h, 97.5.h),
                     backgroundColor: theme.colorScheme.primary.withOpacity(0.3),
                     onTap: _manageExps,
                   ),
                   CalcButton(
                     text: "=",
-                    size: const Size(60, 97.5),
+                    size: Size(60.h, 97.5.h),
                     backgroundColor: theme.colorScheme.primary,
                     foregroundColor: theme.colorScheme.onPrimary,
                     elevation: 10,
