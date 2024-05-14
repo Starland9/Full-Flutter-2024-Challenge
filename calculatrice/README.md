@@ -1,16 +1,12 @@
 # calculatrice
 
-A new Flutter project.
+Une calculatrice en Flutter.
 
-## Getting Started
+<u> Captures </u>
 
-This project is a starting point for a Flutter application.
+<center> <img src="https://github.com/Starland9/Full-Flutter-2024-Challenge/blob/main/calculatrice/assets/screenshots/ss1.png" width="300" > 
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://github.com/Starland9/Full-Flutter-2024-Challenge/blob/main/calculatrice/assets/screenshots/ss2.png" width="300">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+</center>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
