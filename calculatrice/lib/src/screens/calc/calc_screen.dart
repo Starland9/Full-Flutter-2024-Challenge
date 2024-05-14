@@ -1,6 +1,8 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:calculatrice/src/screens/calc/components/calc_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class CalcScreen extends StatefulWidget {
@@ -35,6 +37,7 @@ class _CalcScreenState extends State<CalcScreen> {
               child: Row(
                 children: [
                   _buildThemeSwither(isDark, context),
+                  _bigSpacer(),
                   const Spacer(),
                   Text(
                     "Landry Calc",
@@ -46,7 +49,6 @@ class _CalcScreenState extends State<CalcScreen> {
                 ],
               ),
             ),
-            _bigSpacer(),
             _buildExps(theme),
             Padding(
               padding: const EdgeInsets.all(25.0),
@@ -143,6 +145,7 @@ class _CalcScreenState extends State<CalcScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ...listFirstSigns.map(
               (e) => CalcButton(
@@ -159,8 +162,6 @@ class _CalcScreenState extends State<CalcScreen> {
           ],
         ),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
               flex: 3,
@@ -170,6 +171,7 @@ class _CalcScreenState extends State<CalcScreen> {
                   Wrap(
                     alignment: WrapAlignment.start,
                     runAlignment: WrapAlignment.start,
+                    spacing: 5.w,
                     children: [
                       ...listNums,
                     ],
@@ -179,9 +181,10 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       CalcButton(
                         text: "0",
-                        size: const Size(137, 60),
+                        size: Size(139.w, 60),
                         onTap: _manageExps,
                       ),
+                      SizedBox(width: 5.w),
                       CalcButton(
                         text: ".",
                         onTap: _manageExps,
@@ -195,7 +198,6 @@ class _CalcScreenState extends State<CalcScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   CalcButton(
                     text: "-",
@@ -236,7 +238,7 @@ class _CalcScreenState extends State<CalcScreen> {
                   ? const SizedBox()
                   : CalcButton(
                       text: e,
-                      size: const Size(60, 35),
+                      size: Size(60.w, 35.h),
                       fontSize: 14,
                       onTap: _manageExps,
                     );
@@ -247,7 +249,7 @@ class _CalcScreenState extends State<CalcScreen> {
     );
   }
 
-  SizedBox _bigSpacer() => const SizedBox(height: 35);
+  SizedBox _bigSpacer() => SizedBox(height: 30.h);
 
   _manageExps(String exp) {
     if (_currentExpression == "0") {
@@ -278,71 +280,9 @@ class _CalcScreenState extends State<CalcScreen> {
         _finalExpression = result.toString();
       }
     } catch (e) {
-      print(e);
       _finalExpression = "Erreur ❌";
     }
 
     setState(() {});
   }
-}
-
-class CalcButton extends StatelessWidget {
-  const CalcButton({
-    super.key,
-    required this.text,
-    this.foregroundColor,
-    this.fontSize,
-    this.backgroundColor,
-    this.size,
-    this.radius,
-    this.elevation,
-    this.onTap,
-  });
-
-  final String text;
-  final Color? foregroundColor;
-  final Color? backgroundColor;
-  final double? fontSize;
-  final Size? size;
-  final double? radius;
-  final double? elevation;
-  final Function(String exp)? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? theme.colorScheme.background,
-          elevation: isDark(theme) ? 5 : elevation ?? 0,
-          shadowColor: isDark(theme)
-              ? theme.colorScheme.onBackground.withOpacity(0.1)
-              : null,
-          padding: EdgeInsets.zero,
-          minimumSize: size ?? const Size(0, 0),
-          fixedSize: size ?? const Size(60, 60),
-          shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 35),
-          ),
-        ),
-        onPressed: () {
-          onTap?.call(text);
-        },
-        child: Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: foregroundColor ?? theme.colorScheme.primary,
-              fontSize: fontSize ?? 22,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  bool isDark(ThemeData theme) => theme.brightness == Brightness.dark;
 }

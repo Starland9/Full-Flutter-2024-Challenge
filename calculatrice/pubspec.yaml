@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^6.2.1
   math_expressions: ^2.5.0
   adaptive_theme: ^3.6.0
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:

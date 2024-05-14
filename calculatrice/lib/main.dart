@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:calculatrice/src/screens/calc/calc_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
@@ -17,20 +18,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return AdaptiveTheme(
-      builder: (light, dark) {
-        return MaterialApp(
-          title: 'Landry Calc',
-          debugShowCheckedModeBanner: false,
-          theme: light,
-          darkTheme: dark,
-          home: const CalcScreen(),
-        );
-      },
-      light: ligthTheme,
-      dark: darkTheme,
-      initial: savedThemeMode ?? AdaptiveThemeMode.system,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return AdaptiveTheme(
+            builder: (light, dark) {
+              return MaterialApp(
+                title: 'Landry Calc',
+                debugShowCheckedModeBanner: false,
+                theme: light,
+                darkTheme: dark,
+                home: child,
+              );
+            },
+            light: ligthTheme,
+            dark: darkTheme,
+            initial: savedThemeMode ?? AdaptiveThemeMode.system,
+          );
+        },
+        child: const CalcScreen());
   }
 }
 
