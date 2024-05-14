@@ -1,38 +1,35 @@
-import 'package:calculatrice/src/blocs/theme/theme_bloc.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:calculatrice/src/screens/calc/calc_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_theme/animated_theme_app.dart';
-import 'package:flutter_animated_theme/animation_type.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  runApp(MyApp(savedThemeMode: savedThemeMode));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.savedThemeMode});
+
+  final AdaptiveThemeMode? savedThemeMode;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
-      child: BlocBuilder<ThemeBloc, ThemeState>(
-        builder: (context, state) {
-          final isDark = context.watch<ThemeBloc>().isDark;
-          return AnimatedThemeApp(
-            themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
-            animationDuration: const Duration(milliseconds: 500),
-            animationType: AnimationType.CIRCULAR_ANIMATED_THEME,
-            title: 'Landry Calc',
-            debugShowCheckedModeBanner: false,
-            theme: ligthTheme,
-            darkTheme: darkTheme,
-            home: const CalcScreen(),
-          );
-        },
-      ),
+    return AdaptiveTheme(
+      builder: (light, dark) {
+        return MaterialApp(
+          title: 'Landry Calc',
+          debugShowCheckedModeBanner: false,
+          theme: light,
+          darkTheme: dark,
+          home: const CalcScreen(),
+        );
+      },
+      light: ligthTheme,
+      dark: darkTheme,
+      initial: savedThemeMode ?? AdaptiveThemeMode.system,
     );
   }
 }

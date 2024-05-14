@@ -1,7 +1,6 @@
-import 'package:calculatrice/src/blocs/theme/theme_bloc.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class CalcScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _CalcScreenState extends State<CalcScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.read<ThemeBloc>().isDark;
+    final isDark = AdaptiveTheme.of(context).mode != AdaptiveThemeMode.light;
     final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
@@ -102,7 +101,11 @@ class _CalcScreenState extends State<CalcScreen> {
       activeColor: Theme.of(context).colorScheme.primary,
       value: isDark,
       onChanged: (value) {
-        context.read<ThemeBloc>().add(ChangeThemeEvent(light: value));
+        if (isDark) {
+          AdaptiveTheme.of(context).setLight();
+        } else {
+          AdaptiveTheme.of(context).setDark();
+        }
       },
     );
   }
