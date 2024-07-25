@@ -1,6 +1,20 @@
-<resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC6</color>
-    <color name="scaffoldBackground">#4B4B4B</color>
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="colors.xsd">
+    <color name="black">#000000</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="scaffoldBackground">#f9f9fc</color>
+
+    <color name="grey">#b1b5be</color>
+
+    <color name="skeyBlue">#00a6ed</color>
+
+    <color name="avatarBackground">#d9dbdb</color>
+
+    <color name="green">#51bb00</color>
+
+    <color name="red">#e54e4e</color>
+
+
 </resources>

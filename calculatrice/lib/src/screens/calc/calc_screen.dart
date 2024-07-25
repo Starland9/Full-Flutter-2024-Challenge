@@ -81,7 +81,7 @@ class _CalcScreenState extends State<CalcScreen> {
               Text(
                 _currentExpression,
                 style: theme.textTheme.headlineSmall?.copyWith(
-                  color: theme.colorScheme.onBackground.withOpacity(0.8),
+                  color: theme.colorScheme.onSurface.withOpacity(0.8),
                 ),
                 textAlign: TextAlign.end,
               ),
@@ -90,7 +90,7 @@ class _CalcScreenState extends State<CalcScreen> {
                 _finalExpression,
                 style: theme.textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onBackground),
+                    color: theme.colorScheme.onSurface),
                 textAlign: TextAlign.end,
               ),
             ],
@@ -153,7 +153,7 @@ class _CalcScreenState extends State<CalcScreen> {
                 text: e["text"].toString(),
                 foregroundColor: e["filled"] == true
                     ? theme.colorScheme.primary
-                    : theme.colorScheme.onBackground,
+                    : theme.colorScheme.onSurface,
                 backgroundColor: e["filled"] == true
                     ? theme.colorScheme.primary.withOpacity(0.3)
                     : null,

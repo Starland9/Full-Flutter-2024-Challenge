@@ -32,10 +32,10 @@ class CalcButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: (isDark(theme) && backgroundColor == null)
               ? const Color.fromARGB(133, 77, 77, 77)
-              : backgroundColor ?? theme.colorScheme.background,
+              : backgroundColor ?? theme.colorScheme.surface,
           elevation: elevation ?? 0,
           shadowColor: isDark(theme)
-              ? theme.colorScheme.onBackground.withOpacity(0.1)
+              ? theme.colorScheme.onSurface.withOpacity(0.1)
               : null,
           padding: EdgeInsets.zero,
           minimumSize: size ?? const Size(0, 0),

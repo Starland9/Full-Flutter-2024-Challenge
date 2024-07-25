@@ -13,15 +13,27 @@ import 'package:flutter/material.dart';
 class ColorName {
   ColorName._();
 
-  /// Color: #03DAC6
-  static const Color colorAccent = Color(0xFF03DAC6);
+  /// Color: #d9dbdb
+  static const Color avatarBackground = Color(0xFFD9DBDB);
 
-  /// Color: #6200EE
-  static const Color colorPrimary = Color(0xFF6200EE);
+  /// Color: #000000
+  static const Color black = Color(0xFF000000);
 
-  /// Color: #3700B3
-  static const Color colorPrimaryDark = Color(0xFF3700B3);
+  /// Color: #51bb00
+  static const Color green = Color(0xFF51BB00);
 
-  /// Color: #4B4B4B
-  static const Color scaffoldBackground = Color(0xFF4B4B4B);
+  /// Color: #b1b5be
+  static const Color grey = Color(0xFFB1B5BE);
+
+  /// Color: #e54e4e
+  static const Color red = Color(0xFFE54E4E);
+
+  /// Color: #f9f9fc
+  static const Color scaffoldBackground = Color(0xFFF9F9FC);
+
+  /// Color: #00a6ed
+  static const Color skeyBlue = Color(0xFF00A6ED);
+
+  /// Color: #FFFFFF
+  static const Color white = Color(0xFFFFFFFF);
 }
