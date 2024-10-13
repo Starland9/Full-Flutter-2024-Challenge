@@ -1,4 +1,4 @@
-# Full Flutter Mobile App 2024 Personal Challenge
+# Full Flutter Mobile App 2024 Personal Challenge🥹
 
 - ## [Calculatrice](https://github.com/Starland9/Full-Flutter-2024-Challenge/tree/main/calculatrice)
 
